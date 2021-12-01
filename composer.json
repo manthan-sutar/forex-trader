@@ -1,7 +1,6 @@
 {
     "require": {
         "slim/slim": "3.*",
-        "guzzlehttp/guzzle": "^7.0",
-        "rmccue/requests": "^2.0"
+        "symfony/http-client": "^5.4"
     }
 }

@@ -7,34 +7,24 @@ $app->get('/account', 'account');
 $app->get('/orders', 'orders');
 $app->get('/positions', 'positions');
 $app->get('/trade', 'trade');
+$app->get('/webhooook', 'webhooook');
 
 function account(){
     $metaApi = new MetaApi();
-    return $metaApi->request("accountInformation");
+    return $metaApi->account();
 }
 
 function orders(){
     $metaApi = new MetaApi();
-    return $metaApi->request("orders");
+    return $metaApi->orders();
 }
-
 
 function positions(){
     $metaApi = new MetaApi();
-    return $metaApi->request("positions");
+    return $metaApi->positions();
 }
 
-
-function trade(){
-    $metaApi = new MetaApi();
-    $postdata = http_build_query(
-        array(
-            'actionType' => 'ORDER_TYPE_SELL',
-            'symbol' => 'EURUSD',
-            'volume' => 0.01,
-            'takeProfit' => 1.01
-        )
-    );
-   return $metaApi->request('trade', $postdata, "POST");
+function webhook(){
+    return "asdasd";
 }
 

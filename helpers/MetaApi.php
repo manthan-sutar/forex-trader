@@ -3,14 +3,32 @@
 require 'constants.php';
 require_once 'CurlApi.php';
 
+
 class MetaApi{
-    function request($endpoint, $params = null, $method = "GET"){
+    function openTrade($params){
         $curl = new CurlApi();
-        $api_url = META_API_URL."users/current/accounts/".ACCOUNT_ID."/".$endpoint."?api_key=".AUTH_TOKEN;
-        $headers = array(
-            "Accept: application/json",
-            "auth-token:".AUTH_TOKEN,
-        );
-        return $curl->request($api_url,$method,$headers,$params);
-    }   
+        return $curl->request('trade',"POST", $params);
+    }
+
+    function positions(){
+        $curl = new CurlApi();
+        return $curl->request('positions',"GET");
+    }
+
+    function orders(){
+        $curl = new CurlApi();
+        return $curl->request('orders',"GET");
+    }
+
+    function account(){
+        $curl = new CurlApi();
+        return $curl->request('account',"GET");
+    }
+
+    function closePosition($positionId){
+        $curl = new CurlApi();
+        $params['actionType'] = "POSITION_CLOSE_ID";
+        $params['positionId'] = $positionId;
+        return $curl->request('trade',"POST");
+    }
 }
