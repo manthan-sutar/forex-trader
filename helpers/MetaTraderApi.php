@@ -1,6 +1,5 @@
 <?php 
 
-require 'constants.php';
 require_once 'CallApi.php';
 
 

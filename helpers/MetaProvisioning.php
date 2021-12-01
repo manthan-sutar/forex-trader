@@ -11,6 +11,6 @@ class MetaProvisioning{
     
     function deploy(){
         $callApi = new CallApi();
-        return $callApi->requestMetaProvision(ACCOUNT_ID.'/deploy',"POST");
+        return $callApi->requestMetaProvision(ACCOUNT_ID.'/deploy?executeForAllReplicas=true','POST');
     }
 }

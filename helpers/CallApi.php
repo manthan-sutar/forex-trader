@@ -1,7 +1,5 @@
 <?php 
 
-require 'constants.php';
-
 use Symfony\Component\HttpClient\HttpClient;
 
 class CallApi
@@ -17,12 +15,15 @@ class CallApi
             'headers' => $headers,
             'json' => $params
         ]);
+
+        $res['statusCode'] = 
+
         $content = $response->getContent();
         return $content;
     }
 
     function requestMetaProvision($endpoint = "",$method, $params = []){
-        $api_url = META_PROVISION_API_URL."users/current/accounts/".$endpoint;
+        $api_url = META_PROVISION_API_URL."users/current/accounts/".ACCOUNT_ID."/deploy";
 
         $headers = array(
             "Accept: application/json",
